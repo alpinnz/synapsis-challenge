@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:get_it/get_it.dart';
 import 'package:synapsis/app/core/router/app_router.dart';
-import 'package:synapsis/app/features/auth/auth_injector.dart';
+import 'package:synapsis/app/features/main/main_injector.dart';
 
 final injector = GetIt.instance;
 
@@ -16,7 +16,7 @@ class AppInjector implements Injector {
     injector.registerLazySingleton<AppRouter>(() => AppRouter());
 
     // auth
-    await AuthInjector().initializeDependencies();
+    await MainInjector().initializeDependencies();
     log('success', name: 'APP_INJECTOR-initializeDependencies');
   }
 }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:synapsis/app/core/di/app_injector.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:synapsis/app/core/router/app_router.dart';
 
 class App extends StatelessWidget {
@@ -7,8 +7,16 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      routerConfig: injector<AppRouter>().router,
+    return ScreenUtilInit(
+      designSize: const Size(1366, 1024),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      // Use builder only if you need to use library outside ScreenUtilInit context
+      builder: (_, child) {
+        return MaterialApp.router(
+          routerConfig: appRouter.router,
+        );
+      },
     );
   }
 }
