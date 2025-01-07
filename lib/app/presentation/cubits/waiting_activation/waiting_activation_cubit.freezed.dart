@@ -17,7 +17,6 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$WaitingActivationState {
   CubitState<Device> get activation => throw _privateConstructorUsedError;
-  WaitingActivationArgs? get args => throw _privateConstructorUsedError;
 
   /// Create a copy of WaitingActivationState
   /// with the given fields replaced by the non-null parameter values.
@@ -32,7 +31,7 @@ abstract class $WaitingActivationStateCopyWith<$Res> {
           $Res Function(WaitingActivationState) then) =
       _$WaitingActivationStateCopyWithImpl<$Res, WaitingActivationState>;
   @useResult
-  $Res call({CubitState<Device> activation, WaitingActivationArgs? args});
+  $Res call({CubitState<Device> activation});
 
   $CubitStateCopyWith<Device, $Res> get activation;
 }
@@ -54,17 +53,12 @@ class _$WaitingActivationStateCopyWithImpl<$Res,
   @override
   $Res call({
     Object? activation = null,
-    Object? args = freezed,
   }) {
     return _then(_value.copyWith(
       activation: null == activation
           ? _value.activation
           : activation // ignore: cast_nullable_to_non_nullable
               as CubitState<Device>,
-      args: freezed == args
-          ? _value.args
-          : args // ignore: cast_nullable_to_non_nullable
-              as WaitingActivationArgs?,
     ) as $Val);
   }
 
@@ -88,7 +82,7 @@ abstract class _$$WaitingActivationStateImplCopyWith<$Res>
       __$$WaitingActivationStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({CubitState<Device> activation, WaitingActivationArgs? args});
+  $Res call({CubitState<Device> activation});
 
   @override
   $CubitStateCopyWith<Device, $Res> get activation;
@@ -110,17 +104,12 @@ class __$$WaitingActivationStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? activation = null,
-    Object? args = freezed,
   }) {
     return _then(_$WaitingActivationStateImpl(
       activation: null == activation
           ? _value.activation
           : activation // ignore: cast_nullable_to_non_nullable
               as CubitState<Device>,
-      args: freezed == args
-          ? _value.args
-          : args // ignore: cast_nullable_to_non_nullable
-              as WaitingActivationArgs?,
     ));
   }
 }
@@ -129,18 +118,16 @@ class __$$WaitingActivationStateImplCopyWithImpl<$Res>
 
 class _$WaitingActivationStateImpl extends _WaitingActivationState {
   const _$WaitingActivationStateImpl(
-      {this.activation = const CubitState(status: Status.initial()), this.args})
+      {this.activation = const CubitState(status: Status.initial())})
       : super._();
 
   @override
   @JsonKey()
   final CubitState<Device> activation;
-  @override
-  final WaitingActivationArgs? args;
 
   @override
   String toString() {
-    return 'WaitingActivationState(activation: $activation, args: $args)';
+    return 'WaitingActivationState(activation: $activation)';
   }
 
   @override
@@ -149,12 +136,11 @@ class _$WaitingActivationStateImpl extends _WaitingActivationState {
         (other.runtimeType == runtimeType &&
             other is _$WaitingActivationStateImpl &&
             (identical(other.activation, activation) ||
-                other.activation == activation) &&
-            (identical(other.args, args) || other.args == args));
+                other.activation == activation));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, activation, args);
+  int get hashCode => Object.hash(runtimeType, activation);
 
   /// Create a copy of WaitingActivationState
   /// with the given fields replaced by the non-null parameter values.
@@ -167,15 +153,12 @@ class _$WaitingActivationStateImpl extends _WaitingActivationState {
 }
 
 abstract class _WaitingActivationState extends WaitingActivationState {
-  const factory _WaitingActivationState(
-      {final CubitState<Device> activation,
-      final WaitingActivationArgs? args}) = _$WaitingActivationStateImpl;
+  const factory _WaitingActivationState({final CubitState<Device> activation}) =
+      _$WaitingActivationStateImpl;
   const _WaitingActivationState._() : super._();
 
   @override
   CubitState<Device> get activation;
-  @override
-  WaitingActivationArgs? get args;
 
   /// Create a copy of WaitingActivationState
   /// with the given fields replaced by the non-null parameter values.

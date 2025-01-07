@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:synapsis/app/assets/assets.gen.dart';
 import 'package:synapsis/app/core/router/app_router.dart';
+import 'package:synapsis/app/presentation/cubits/app/app_cubit.dart';
 import 'package:synapsis/app/presentation/cubits/waiting_activation/waiting_activation_cubit.dart';
 import 'package:synapsis/app/shared/theme/theme_color.dart';
 import 'package:synapsis/app/shared/theme/theme_text_style.dart';
@@ -85,7 +86,7 @@ class WaitingActivationTabletPage extends StatelessWidget {
                         BlocBuilder<WaitingActivationCubit, WaitingActivationState>(
                           builder: (context, state) {
                             return TextField(
-                              controller: TextEditingController(text: state.args?.device.headUnitSn ?? "-"),
+                              controller: TextEditingController(text: context.read<AppCubit>().state.device?.headUnitSn ?? "-"),
                               style: ThemeTextStyle.custom(
                                 fontFamily: GoogleFonts.inter().fontFamily,
                                 fontSize: 24.sp,

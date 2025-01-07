@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:synapsis/app/domain/entities/equipment/equipment.dart';
 
 class Device extends Equatable {
   final String id;
@@ -7,6 +8,7 @@ class Device extends Equatable {
   final DateTime createdAt;
   final DateTime updatedAt;
   final String headUnitSn;
+  final Equipment? equipment;
 
   const Device({
     required this.id,
@@ -15,6 +17,7 @@ class Device extends Equatable {
     required this.createdAt,
     required this.updatedAt,
     required this.headUnitSn,
+    this.equipment,
   });
 
   @override
@@ -25,5 +28,6 @@ class Device extends Equatable {
         createdAt,
         updatedAt,
         headUnitSn,
+        equipment,
       ];
 }

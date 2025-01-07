@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:synapsis/app/core/di/app_injector.dart';
 import 'package:synapsis/app/core/router/app_router.dart';
+import 'package:synapsis/app/presentation/cubits/app/app_cubit.dart';
 import 'package:synapsis/app/shared/base/b_toast.dart';
 
 class App extends StatelessWidget {
@@ -13,10 +16,14 @@ class App extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (_, child) {
-        return MaterialApp.router(
-          routerConfig: appRouter.router,
-          builder: (context, child) => BToastScope(
-            child: child ?? const SizedBox(),
+        return BlocProvider(
+          create: (context) => injector<AppCubit>(),
+          child: MaterialApp.router(
+            routerConfig: appRouter.router,
+            builder: (context, child) =>
+                BToastScope(
+                  child: child ?? const SizedBox(),
+                ),
           ),
         );
       },

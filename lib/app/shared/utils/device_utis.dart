@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/foundation.dart';
 
@@ -9,7 +11,7 @@ class DeviceUtils {
       case TargetPlatform.android:
         {
           final androidInfo = await deviceInfo.androidInfo;
-          identifier = androidInfo.id;
+          identifier = androidInfo.id.replaceAll(".", "");
         }
       case TargetPlatform.fuchsia:
         {}
@@ -28,6 +30,7 @@ class DeviceUtils {
       case TargetPlatform.windows:
         {}
     }
+    log(identifier, name: "DEVICE_ID");
     return identifier;
   }
 }

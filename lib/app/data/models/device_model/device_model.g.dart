@@ -15,6 +15,9 @@ DeviceModel _$DeviceModelFromJson(Map<String, dynamic> json) => DeviceModel(
       createdAt: DateTime.parse(json['created_at'] as String),
       updatedAt: DateTime.parse(json['updated_at'] as String),
       headUnitSn: json['head_unit_sn'] as String,
+      equipment: json['equipment'] == null
+          ? null
+          : EquipmentModel.fromJson(json['equipment'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$DeviceModelToJson(DeviceModel instance) =>
@@ -25,4 +28,5 @@ Map<String, dynamic> _$DeviceModelToJson(DeviceModel instance) =>
       'created_at': instance.createdAt.toIso8601String(),
       'updated_at': instance.updatedAt.toIso8601String(),
       'head_unit_sn': instance.headUnitSn,
+      'equipment': instance.equipment?.toJson(),
     };

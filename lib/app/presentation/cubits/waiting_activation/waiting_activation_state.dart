@@ -6,6 +6,5 @@ class WaitingActivationState with _$WaitingActivationState {
 
   const factory WaitingActivationState({
     @Default(CubitState(status: Status.initial())) CubitState<Device> activation,
-    WaitingActivationArgs? args,
   }) = _WaitingActivationState;
 }

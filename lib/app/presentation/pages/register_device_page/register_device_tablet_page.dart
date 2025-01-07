@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:synapsis/app/assets/assets.gen.dart';
 import 'package:synapsis/app/core/router/app_router.dart';
+import 'package:synapsis/app/presentation/cubits/app/app_cubit.dart';
 import 'package:synapsis/app/presentation/cubits/register_device/register_device_cubit.dart';
 import 'package:synapsis/app/presentation/cubits/waiting_activation/waiting_activation_cubit.dart';
 import 'package:synapsis/app/shared/base/b_toast.dart';
@@ -25,8 +26,8 @@ class RegisterDeviceTabletPage extends StatelessWidget {
             appRouter.toLogin(context);
           }
           if (state.device.data?.isActive == false) {
-            final args = WaitingActivationArgs(device: state.device.data!);
-            appRouter.toWaitingActivation(context, args: args);
+            context.read<AppCubit>().setDevice(state.device.data!);
+            appRouter.toWaitingActivation(context);
           }
         }
       },

@@ -14,8 +14,8 @@ class DeviceRepositoryImpl extends DeviceRepository {
   @override
   Future<Either<BaseException, Device>> getDeviceById({required String deviceId}) async {
     try {
-      Device res = await deviceRemoteDataSource.getDeviceById(deviceId: deviceId);
-      return Success(res);
+      final res = await deviceRemoteDataSource.getDeviceById(deviceId: deviceId);
+      return Success(res.toEntity());
     } on BaseException catch (_) {
       rethrow;
     } catch (err) {

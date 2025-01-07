@@ -57,7 +57,7 @@ class AppRouter {
         path: waitingActivation.path,
         builder: (context, state) {
           return BlocProvider(
-            create: (context) => injector<WaitingActivationCubit>()..onInitial(state.extra as WaitingActivationArgs),
+            create: (context) => injector<WaitingActivationCubit>()..onInitial(),
             child: WaitingActivationPage(),
           );
         },
@@ -184,7 +184,7 @@ class AppRouter {
 
   toRegisterDevice(BuildContext context) => context.goNamed(registerDevice.name);
 
-  toWaitingActivation(BuildContext context, {required WaitingActivationArgs args}) => context.goNamed(waitingActivation.name, extra: args);
+  toWaitingActivation(BuildContext context) => context.goNamed(waitingActivation.name);
 
   toLogin(BuildContext context) => context.goNamed(login.name);
 

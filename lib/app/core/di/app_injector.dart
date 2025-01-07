@@ -7,6 +7,7 @@ import 'package:synapsis/app/data/data_sources/device_data_source/device_remote_
 import 'package:synapsis/app/data/repositories/device_repository_impl.dart';
 import 'package:synapsis/app/domain/repositories/device_repository.dart';
 import 'package:synapsis/app/domain/use_cases/device_get_device_by_id_use_case.dart';
+import 'package:synapsis/app/presentation/cubits/app/app_cubit.dart';
 import 'package:synapsis/app/presentation/cubits/chat/chat_cubit.dart';
 import 'package:synapsis/app/presentation/cubits/chat_new/chat_new_cubit.dart';
 import 'package:synapsis/app/presentation/cubits/login/login_cubit.dart';
@@ -38,6 +39,7 @@ class AppInjector {
 
     injector.registerFactory<WaitingActivationCubit>(() => WaitingActivationCubit(socketChannel: injector()));
     injector.registerFactory<LoginCubit>(() => LoginCubit());
+    injector.registerFactory<AppCubit>(() => AppCubit());
     injector.registerFactory<OnDutyCubit>(() => OnDutyCubit());
     injector.registerFactory<ChatCubit>(() => ChatCubit());
     injector.registerFactory<ChatNewCubit>(() => ChatNewCubit());
