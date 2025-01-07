@@ -1,0 +1,118 @@
+{
+  "code": 200,
+  "status": true,
+  "message": "Device details found",
+  "data": {
+    "id": "DEVICE06",
+    "is_active": true,
+    "activated_at": "2025-01-07T01:42:35.308701Z",
+    "created_at": "2024-11-06T04:03:25.804716Z",
+    "updated_at": "2025-01-07T01:42:35.308701Z",
+    "head_unit_sn": "DEVICE05_heheh-1",
+    "equipment": {
+      "id": "64e13a68df",
+      "site": {
+        "id": "056C",
+        "geo_json_url": "",
+        "site": "056C",
+        "name": "Berau Coal Sambarata B-East",
+        "client_name": "",
+        "address": "PT Berau Coal (B-West) Pit C2HS/C2HTSambarata, Tanjung Redeb, East KalimantanIDN",
+        "latitude": "",
+        "longitude": "",
+        "is_active": true,
+        "is_default": false,
+        "created_at": "2024-11-21T10:11:34.440119Z",
+        "updated_at": "2024-11-21T10:11:34.440119Z",
+        "geojson": {
+          "file_name": "",
+          "coordinates": null
+        }
+      },
+      "model": {
+        "id": "e8a9b25a39",
+        "no": "TR-1010",
+        "name": "TR-1010",
+        "capacity": 200,
+        "radius_meters": null,
+        "is_tyre": true,
+        "tyre_class": "Medium",
+        "is_active": true,
+        "class": {
+          "id": "1",
+          "name": "Class 1"
+        },
+        "measurement": {
+          "id": "TON",
+          "name": "Ton"
+        },
+        "manufacture": {
+          "id": "c1b763a61e",
+          "code": "SCA",
+          "name": "SCANIA (DATA ARLAN)",
+          "is_active": true,
+          "created_at": "2024-08-12T07:50:53.502776Z",
+          "updated_at": "2024-09-30T10:44:49.617775Z",
+          "model_count": 0,
+          "type": "",
+          "system": ""
+        },
+        "equipment_category": {
+          "id": "WHEEL",
+          "name": "WHEEL ONLY",
+          "is_active": true,
+          "is_default": false,
+          "created_at": "2024-08-13T03:54:12.624428Z",
+          "updated_at": "2024-11-08T04:44:29.387112Z",
+          "equipment_type": {
+            "id": "TR",
+            "name": "TRUCK RIGID (DATA ARLAN)",
+            "code": "TR",
+            "icon_url": "https://assets.apps-madhani.com/fms-dev/equipment/12345-20240918020951530.svg",
+            "is_active": true,
+            "is_default": false,
+            "modifications": null,
+            "created_at": "2024-01-05T09:47:01.306Z",
+            "updated_at": "2024-09-30T10:26:43.104284Z",
+            "app_background_url": "",
+            "app_label": ""
+          }
+        },
+        "created_at": "2024-08-13T04:45:11.456526Z",
+        "updated_at": "2024-09-13T07:51:48.05105Z"
+      },
+      "nearon_sn": "CNX23175",
+      "head_unit_sn": "DEVICE05_heheh-1",
+      "device_id": "DEVICE06",
+      "serial_number": "1010",
+      "code": "TR-1010123",
+      "hm": 4323,
+      "km": 4123,
+      "engine_no": "Test",
+      "engine_model": "Test",
+      "purchased_date": "2024-11-28T16:08:56Z",
+      "purchased_status": "New",
+      "condition_status": "Running",
+      "outline_color": "#53b3f3",
+      "is_active": true,
+      "created_at": "2024-08-13T04:47:05.357107Z",
+      "updated_at": "2024-11-28T16:08:49.172671Z",
+      "telemetry": {
+        "total_distance_travelled": null
+      },
+      "site_factor_material": {
+        "factor_material": 0,
+        "material_id": "",
+        "material_name": "",
+        "measurement_id": "",
+        "measurement_name": ""
+      },
+      "installed_modification": {
+        "id": "5c95c97be2",
+        "modification": "MODIFS",
+        "description": "modification"
+      },
+      "site_factor_materials": null
+    }
+  }
+}

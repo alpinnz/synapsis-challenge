@@ -74,11 +74,28 @@ class $AssetsImagesGen {
   List<AssetGenImage> get values => [demo, profile];
 }
 
+class $AssetsJsonsGen {
+  const $AssetsJsonsGen();
+
+  /// File path: assets/jsons/device_get_device_by_id_200_response.json
+  String get deviceGetDeviceById200Response => 'assets/jsons/device_get_device_by_id_200_response.json';
+
+  /// File path: assets/jsons/device_get_device_by_id_404_response.json
+  String get deviceGetDeviceById404Response => 'assets/jsons/device_get_device_by_id_404_response.json';
+
+  /// File path: assets/jsons/device_get_device_by_id_500_response.json
+  String get deviceGetDeviceById500Response => 'assets/jsons/device_get_device_by_id_500_response.json';
+
+  /// List of all assets
+  List<String> get values => [deviceGetDeviceById200Response, deviceGetDeviceById404Response, deviceGetDeviceById500Response];
+}
+
 class Assets {
   Assets._();
 
   static const $AssetsIconsGen icons = $AssetsIconsGen();
   static const $AssetsImagesGen images = $AssetsImagesGen();
+  static const $AssetsJsonsGen jsons = $AssetsJsonsGen();
 }
 
 class AssetGenImage {
