@@ -21,6 +21,7 @@ void main() {
   final deviceRemoteDataSourceImpl = DeviceRemoteDataSourceImpl(httpClient: mockHttpClient);
 
   const String deviceId200 = "DEVICE06";
+  const String deviceId200Deactivate = "445D768F-F353-42E8-9243-34AB0F22A1FA";
   const String deviceId404 = "1231231";
   const String deviceId500 = "1231231";
 
@@ -72,6 +73,23 @@ void main() {
 
         try {
           var res = await deviceRemoteDataSourceImpl.getDeviceById(deviceId: deviceId200);
+          expect(res, expectT);
+        } catch (err) {
+          fail("Error: $err");
+        }
+      });
+
+      test('Status Code 200 Deactivate', () async {
+        final uri = Uri.parse("${UrlConstants.baseApiUrl}${UrlConstants.equipmentsDevices}/$deviceId200Deactivate");
+        final expectJson = jsonReader(Assets.jsons.deviceGetDeviceById200DeactivateResponse);
+        final expectT = ResponseModel<DeviceModel>.fromJson(expectJson, (json) => DeviceModel.fromJson(json as Map<String, dynamic>)).data;
+        // Proses stubbing
+        when(mockHttpClient.get(uri)).thenAnswer((e) async {
+          return http.Response(json.encode(expectJson), 200);
+        });
+
+        try {
+          var res = await deviceRemoteDataSourceImpl.getDeviceById(deviceId: deviceId200Deactivate);
           expect(res, expectT);
         } catch (err) {
           fail("Error: $err");

@@ -6,5 +6,6 @@ class RegisterDeviceState with _$RegisterDeviceState {
 
   const factory RegisterDeviceState({
     @Default(0) double progressPercent,
+    @Default(CubitState<Device>(status: Status.initial())) CubitState<Device> device,
   }) = _RegisterDeviceState;
 }

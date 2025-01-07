@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:synapsis/app/core/error/exception.dart';
 
 class Status extends Equatable {
   final bool isInitial;
@@ -8,7 +9,7 @@ class Status extends Equatable {
   final bool isEmpty;
   final bool isLoadingMore;
   final String? message;
-  final Exception? exception;
+  final BaseException? exception;
 
   const Status({
     this.isInitial = false,
@@ -16,22 +17,22 @@ class Status extends Equatable {
     this.isLoading = false,
     this.isFailure = false,
     this.isSuccess = false,
-    this.message,
     this.isLoadingMore = false,
+    this.message,
     this.exception,
   });
 
   const Status.initial() : this(isInitial: true);
 
-  const Status.loading({String? message, Exception? exception}) : this(isLoading: true, message: message, exception: exception);
+  const Status.loading({String? message, BaseException? exception}) : this(isLoading: true, message: message, exception: exception);
 
-  const Status.loadingMore({String? message, Exception? exception}) : this(isLoadingMore: true, message: message, exception: exception);
+  const Status.loadingMore({String? message, BaseException? exception}) : this(isLoadingMore: true, message: message, exception: exception);
 
-  const Status.success({String? message, Exception? exception}) : this(isSuccess: true, message: message, exception: exception);
+  const Status.success({String? message, BaseException? exception}) : this(isSuccess: true, message: message, exception: exception);
 
-  const Status.failure({String? message, Exception? exception}) : this(isFailure: true, message: message, exception: exception);
+  const Status.failure({String? message, BaseException? exception}) : this(isFailure: true, message: message, exception: exception);
 
-  const Status.empty({String? message, Exception? exception}) : this(isEmpty: true, message: message, exception: exception);
+  const Status.empty({String? message, BaseException? exception}) : this(isEmpty: true, message: message, exception: exception);
 
   @override
   List<Object?> get props => [isInitial, isLoading, isFailure, isSuccess, isEmpty, isLoadingMore];

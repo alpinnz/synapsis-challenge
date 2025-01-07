@@ -1,9 +1,10 @@
 import 'package:equatable/equatable.dart';
+import 'package:synapsis/app/core/error/exception.dart';
 
 /// Base Either class
 /// [S] represents the type of the success value
-/// [E] should be [Exception] or a subclass of it
-sealed class Either<E extends Exception, S> extends Equatable {
+/// [E] should be [BaseException] or a subclass of it
+sealed class Either<E extends BaseException, S> extends Equatable {
   const Either();
 
   S? get getValue {
@@ -14,7 +15,7 @@ sealed class Either<E extends Exception, S> extends Equatable {
   }
 }
 
-final class Success<E extends Exception, S> extends Either<E, S> {
+final class Success<E extends BaseException, S> extends Either<E, S> {
   const Success(this.value);
 
   final S value;
@@ -23,7 +24,7 @@ final class Success<E extends Exception, S> extends Either<E, S> {
   List<Object?> get props => [value];
 }
 
-final class Failure<E extends Exception, S> extends Either<E, S> {
+final class Failure<E extends BaseException, S> extends Either<E, S> {
   const Failure(this.exception);
 
   final E exception;

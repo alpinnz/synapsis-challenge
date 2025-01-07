@@ -5,10 +5,10 @@ part 'device_model.g.dart';
 
 @JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class DeviceModel extends Device {
-  DeviceModel({
+  const DeviceModel({
     required super.id,
     required super.isActive,
-    required super.activatedAt,
+    super.activatedAt,
     required super.createdAt,
     required super.updatedAt,
     required super.headUnitSn,

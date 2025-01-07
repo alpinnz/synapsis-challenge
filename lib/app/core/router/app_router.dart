@@ -28,7 +28,7 @@ final GlobalKey<NavigatorState> appNavigatorKey = GlobalKey<NavigatorState>();
 
 class AppRouter {
   static RouterData registerDevice = RouterData(name: "Register Device", path: "/register-device");
-  static RouterData waitingActivationPage = RouterData(name: "Waiting Activation", path: "/waiting-activation");
+  static RouterData waitingActivation = RouterData(name: "Waiting Activation", path: "/waiting-Activation");
   static RouterData login = RouterData(name: "Login", path: "/login");
   static RouterData onDuty = RouterData(name: "On Duty", path: "/on-duty");
   static RouterData chat = RouterData(name: "Chat", path: "/chat");
@@ -53,11 +53,11 @@ class AppRouter {
       ),
       GoRoute(
         parentNavigatorKey: appNavigatorKey,
-        name: waitingActivationPage.name,
-        path: waitingActivationPage.path,
+        name: waitingActivation.name,
+        path: waitingActivation.path,
         builder: (context, state) {
           return BlocProvider(
-            create: (context) => injector<WaitingActivationCubit>()..onInitial(),
+            create: (context) => injector<WaitingActivationCubit>()..onInitial(state.extra as WaitingActivationArgs),
             child: WaitingActivationPage(),
           );
         },
@@ -184,7 +184,7 @@ class AppRouter {
 
   toRegisterDevice(BuildContext context) => context.goNamed(registerDevice.name);
 
-  toWaitingActivation(BuildContext context) => context.goNamed(waitingActivationPage.name);
+  toWaitingActivation(BuildContext context, {required WaitingActivationArgs args}) => context.goNamed(waitingActivation.name, extra: args);
 
   toLogin(BuildContext context) => context.goNamed(login.name);
 

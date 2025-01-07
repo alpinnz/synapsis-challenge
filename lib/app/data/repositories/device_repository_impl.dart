@@ -1,4 +1,3 @@
-import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:synapsis/app/core/error/either.dart';
 import 'package:synapsis/app/core/error/exception.dart';
 import 'package:synapsis/app/data/data_sources/device_data_source/device_remote_data_source.dart';
@@ -13,19 +12,14 @@ class DeviceRepositoryImpl extends DeviceRepository {
   });
 
   @override
-  Future<Either<Exception, Device>> getDeviceById({required String deviceId}) async {
+  Future<Either<BaseException, Device>> getDeviceById({required String deviceId}) async {
     try {
-      // Check internet
-      final List<ConnectivityResult> connectivityResult = await (Connectivity().checkConnectivity());
-
-      if (connectivityResult.contains(ConnectivityResult.none)) {
-        return Failure(ConnectionException(message: "connection failed"));
-      } else {
-        Device res = await deviceRemoteDataSource.getDeviceById(deviceId: deviceId);
-        return Success(res);
-      }
-    } catch (e) {
-      return Failure(ServerException(code: 500, message: e.toString()));
+      Device res = await deviceRemoteDataSource.getDeviceById(deviceId: deviceId);
+      return Success(res);
+    } on BaseException catch (_) {
+      rethrow;
+    } catch (err) {
+      throw ClientException(message: err.toString());
     }
   }
 }

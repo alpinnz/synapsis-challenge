@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:synapsis/app/app.dart';
-import 'package:synapsis/app/core/bloc/app_bloc.dart';
 import 'package:synapsis/app/core/di/app_injector.dart';
 
 Future<void> main() async {
-  Bloc.observer = AppBlocObserver();
+  // Bloc.observer = AppBlocObserver();
   await AppInjector().initializeDependencies();
   runApp(App());
 }

@@ -15,7 +15,7 @@ class WaitingActivationTabletPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocListener<WaitingActivationCubit, WaitingActivationState>(
       listener: (context, state) {
-        if (state.register.status.isSuccess) {
+        if (state.activation.status.isSuccess) {
           appRouter.toLogin(context);
         }
       },
@@ -82,25 +82,29 @@ class WaitingActivationTabletPage extends StatelessWidget {
                             color: ThemeColor.x121212,
                           ),
                         ),
-                        TextField(
-                          controller: TextEditingController(text: "SID986asd97asf0"),
-                          style: ThemeTextStyle.custom(
-                            fontFamily: GoogleFonts.inter().fontFamily,
-                            fontSize: 24.sp,
-                            fontWeight: FontWeight.w500,
-                            color: ThemeColor.x646464,
-                          ),
-                          readOnly: true,
-                          textAlign: TextAlign.center,
-                          decoration: InputDecoration(
-                            filled: true,
-                            fillColor: ThemeColor.xFAFDFD,
-                            border: OutlineInputBorder(
-                              gapPadding: 8,
-                              borderSide: BorderSide(color: ThemeColor.xD0D7DE, width: 1),
-                              borderRadius: BorderRadius.circular(4),
-                            ),
-                          ),
+                        BlocBuilder<WaitingActivationCubit, WaitingActivationState>(
+                          builder: (context, state) {
+                            return TextField(
+                              controller: TextEditingController(text: state.args?.device.headUnitSn ?? "-"),
+                              style: ThemeTextStyle.custom(
+                                fontFamily: GoogleFonts.inter().fontFamily,
+                                fontSize: 24.sp,
+                                fontWeight: FontWeight.w500,
+                                color: ThemeColor.x646464,
+                              ),
+                              readOnly: true,
+                              textAlign: TextAlign.center,
+                              decoration: InputDecoration(
+                                filled: true,
+                                fillColor: ThemeColor.xFAFDFD,
+                                border: OutlineInputBorder(
+                                  gapPadding: 8,
+                                  borderSide: BorderSide(color: ThemeColor.xD0D7DE, width: 1),
+                                  borderRadius: BorderRadius.circular(4),
+                                ),
+                              ),
+                            );
+                          },
                         ),
                       ],
                     ),

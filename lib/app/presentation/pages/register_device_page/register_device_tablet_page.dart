@@ -5,6 +5,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:synapsis/app/assets/assets.gen.dart';
 import 'package:synapsis/app/core/router/app_router.dart';
 import 'package:synapsis/app/presentation/cubits/register_device/register_device_cubit.dart';
+import 'package:synapsis/app/presentation/cubits/waiting_activation/waiting_activation_cubit.dart';
+import 'package:synapsis/app/shared/base/b_toast.dart';
 import 'package:synapsis/app/shared/theme/theme_color.dart';
 import 'package:synapsis/app/shared/theme/theme_text_style.dart';
 
@@ -16,7 +18,16 @@ class RegisterDeviceTabletPage extends StatelessWidget {
     return BlocListener<RegisterDeviceCubit, RegisterDeviceState>(
       listener: (context, state) {
         if (state.progressPercent == 100) {
-          appRouter.toWaitingActivation(context);
+          if (state.device.status.isFailure) {
+            BToast.showToast(context, exception: state.device.status.exception);
+          }
+          if (state.device.data?.isActive == true) {
+            appRouter.toLogin(context);
+          }
+          if (state.device.data?.isActive == false) {
+            final args = WaitingActivationArgs(device: state.device.data!);
+            appRouter.toWaitingActivation(context, args: args);
+          }
         }
       },
       child: Scaffold(
@@ -29,98 +40,101 @@ class RegisterDeviceTabletPage extends StatelessWidget {
               color: ThemeColor.xFFFFFF,
               borderRadius: BorderRadius.circular(8),
             ),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              spacing: 64,
-              children: [
-                Row(
+            child: BlocBuilder<RegisterDeviceCubit, RegisterDeviceState>(
+              builder: (context, state) {
+                return Column(
                   mainAxisSize: MainAxisSize.min,
-                  spacing: 8,
+                  spacing: 64,
                   children: [
-                    Assets.icons.install.svg(),
-                    Column(
+                    Row(
                       mainAxisSize: MainAxisSize.min,
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                      spacing: 8,
                       children: [
-                        Text(
-                          "Installation Wizard",
-                          style: ThemeTextStyle.custom(
-                            fontFamily: GoogleFonts.inter().fontFamily,
-                            fontSize: 32.sp,
-                            fontWeight: FontWeight.w700,
-                            color: ThemeColor.x1F3251,
-                          ),
-                        ),
-                        Text(
-                          "Device must be registered before can be used",
-                          style: ThemeTextStyle.custom(
-                            fontFamily: GoogleFonts.inter().fontFamily,
-                            fontSize: 24.sp,
-                            fontWeight: FontWeight.w400,
-                            color: ThemeColor.x1073FC,
-                          ),
-                        )
-                      ],
-                    ),
-                  ],
-                ),
-                // step 1
-                Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  spacing: 20,
-                  children: [
-                    BlocSelector<RegisterDeviceCubit, RegisterDeviceState, double>(
-                      selector: (state) => state.progressPercent,
-                      builder: (context, state) {
-                        return LinearProgressIndicator(
-                          minHeight: 12,
-                          color: ThemeColor.x1073FC,
-                          backgroundColor: ThemeColor.xD9D9D9,
-                          value: state / 100,
-                        );
-                      },
-                    ),
-                    Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
+                        Assets.icons.install.svg(),
                         Column(
                           mainAxisSize: MainAxisSize.min,
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              "Please Wait",
+                              "Installation Wizard",
                               style: ThemeTextStyle.custom(
                                 fontFamily: GoogleFonts.inter().fontFamily,
-                                fontSize: 19.sp,
-                                fontWeight: FontWeight.w600,
-                                color: ThemeColor.x121212,
+                                fontSize: 32.sp,
+                                fontWeight: FontWeight.w700,
+                                color: ThemeColor.x1F3251,
                               ),
                             ),
                             Text(
-                              "We tried to install your device",
+                              "Device must be registered before can be used",
                               style: ThemeTextStyle.custom(
                                 fontFamily: GoogleFonts.inter().fontFamily,
-                                fontSize: 19.sp,
-                                fontWeight: FontWeight.w300,
-                                color: ThemeColor.x121212,
+                                fontSize: 24.sp,
+                                fontWeight: FontWeight.w400,
+                                color: ThemeColor.x1073FC,
                               ),
                             )
                           ],
-                        )
+                        ),
                       ],
                     ),
+                    Column(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      spacing: 20,
+                      children: [
+                        BlocSelector<RegisterDeviceCubit, RegisterDeviceState, double>(
+                          selector: (state) => state.progressPercent,
+                          builder: (context, state) {
+                            return LinearProgressIndicator(
+                              minHeight: 12,
+                              color: ThemeColor.x1073FC,
+                              backgroundColor: ThemeColor.xD9D9D9,
+                              value: state / 100,
+                            );
+                          },
+                        ),
+                        Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Text(
+                                  "Please Wait",
+                                  style: ThemeTextStyle.custom(
+                                    fontFamily: GoogleFonts.inter().fontFamily,
+                                    fontSize: 19.sp,
+                                    fontWeight: FontWeight.w600,
+                                    color: ThemeColor.x121212,
+                                  ),
+                                ),
+                                Text(
+                                  "We tried to install your device",
+                                  style: ThemeTextStyle.custom(
+                                    fontFamily: GoogleFonts.inter().fontFamily,
+                                    fontSize: 19.sp,
+                                    fontWeight: FontWeight.w300,
+                                    color: ThemeColor.x121212,
+                                  ),
+                                )
+                              ],
+                            )
+                          ],
+                        ),
+                      ],
+                    ),
+                    Text(
+                      "Version 1.0.0",
+                      style: ThemeTextStyle.custom(
+                        fontFamily: GoogleFonts.sora().fontFamily,
+                        fontSize: 14.sp,
+                        fontWeight: FontWeight.w400,
+                        color: ThemeColor.x000000,
+                      ),
+                    ),
                   ],
-                ),
-                Text(
-                  "Version 1.0.0",
-                  style: ThemeTextStyle.custom(
-                    fontFamily: GoogleFonts.sora().fontFamily,
-                    fontSize: 14.sp,
-                    fontWeight: FontWeight.w400,
-                    color: ThemeColor.x000000,
-                  ),
-                ),
-              ],
+                );
+              },
             ),
           ),
         ),

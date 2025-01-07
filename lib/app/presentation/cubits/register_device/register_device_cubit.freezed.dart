@@ -17,6 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$RegisterDeviceState {
   double get progressPercent => throw _privateConstructorUsedError;
+  CubitState<Device> get device => throw _privateConstructorUsedError;
 
   /// Create a copy of RegisterDeviceState
   /// with the given fields replaced by the non-null parameter values.
@@ -31,7 +32,9 @@ abstract class $RegisterDeviceStateCopyWith<$Res> {
           RegisterDeviceState value, $Res Function(RegisterDeviceState) then) =
       _$RegisterDeviceStateCopyWithImpl<$Res, RegisterDeviceState>;
   @useResult
-  $Res call({double progressPercent});
+  $Res call({double progressPercent, CubitState<Device> device});
+
+  $CubitStateCopyWith<Device, $Res> get device;
 }
 
 /// @nodoc
@@ -50,13 +53,28 @@ class _$RegisterDeviceStateCopyWithImpl<$Res, $Val extends RegisterDeviceState>
   @override
   $Res call({
     Object? progressPercent = null,
+    Object? device = null,
   }) {
     return _then(_value.copyWith(
       progressPercent: null == progressPercent
           ? _value.progressPercent
           : progressPercent // ignore: cast_nullable_to_non_nullable
               as double,
+      device: null == device
+          ? _value.device
+          : device // ignore: cast_nullable_to_non_nullable
+              as CubitState<Device>,
     ) as $Val);
+  }
+
+  /// Create a copy of RegisterDeviceState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $CubitStateCopyWith<Device, $Res> get device {
+    return $CubitStateCopyWith<Device, $Res>(_value.device, (value) {
+      return _then(_value.copyWith(device: value) as $Val);
+    });
   }
 }
 
@@ -68,7 +86,10 @@ abstract class _$$RegisterDeviceStateImplCopyWith<$Res>
       __$$RegisterDeviceStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({double progressPercent});
+  $Res call({double progressPercent, CubitState<Device> device});
+
+  @override
+  $CubitStateCopyWith<Device, $Res> get device;
 }
 
 /// @nodoc
@@ -85,12 +106,17 @@ class __$$RegisterDeviceStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? progressPercent = null,
+    Object? device = null,
   }) {
     return _then(_$RegisterDeviceStateImpl(
       progressPercent: null == progressPercent
           ? _value.progressPercent
           : progressPercent // ignore: cast_nullable_to_non_nullable
               as double,
+      device: null == device
+          ? _value.device
+          : device // ignore: cast_nullable_to_non_nullable
+              as CubitState<Device>,
     ));
   }
 }
@@ -98,15 +124,21 @@ class __$$RegisterDeviceStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$RegisterDeviceStateImpl extends _RegisterDeviceState {
-  const _$RegisterDeviceStateImpl({this.progressPercent = 0}) : super._();
+  const _$RegisterDeviceStateImpl(
+      {this.progressPercent = 0,
+      this.device = const CubitState<Device>(status: Status.initial())})
+      : super._();
 
   @override
   @JsonKey()
   final double progressPercent;
+  @override
+  @JsonKey()
+  final CubitState<Device> device;
 
   @override
   String toString() {
-    return 'RegisterDeviceState(progressPercent: $progressPercent)';
+    return 'RegisterDeviceState(progressPercent: $progressPercent, device: $device)';
   }
 
   @override
@@ -115,11 +147,12 @@ class _$RegisterDeviceStateImpl extends _RegisterDeviceState {
         (other.runtimeType == runtimeType &&
             other is _$RegisterDeviceStateImpl &&
             (identical(other.progressPercent, progressPercent) ||
-                other.progressPercent == progressPercent));
+                other.progressPercent == progressPercent) &&
+            (identical(other.device, device) || other.device == device));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, progressPercent);
+  int get hashCode => Object.hash(runtimeType, progressPercent, device);
 
   /// Create a copy of RegisterDeviceState
   /// with the given fields replaced by the non-null parameter values.
@@ -132,12 +165,15 @@ class _$RegisterDeviceStateImpl extends _RegisterDeviceState {
 }
 
 abstract class _RegisterDeviceState extends RegisterDeviceState {
-  const factory _RegisterDeviceState({final double progressPercent}) =
-      _$RegisterDeviceStateImpl;
+  const factory _RegisterDeviceState(
+      {final double progressPercent,
+      final CubitState<Device> device}) = _$RegisterDeviceStateImpl;
   const _RegisterDeviceState._() : super._();
 
   @override
   double get progressPercent;
+  @override
+  CubitState<Device> get device;
 
   /// Create a copy of RegisterDeviceState
   /// with the given fields replaced by the non-null parameter values.

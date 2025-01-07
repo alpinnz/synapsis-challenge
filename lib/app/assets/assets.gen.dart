@@ -77,6 +77,9 @@ class $AssetsImagesGen {
 class $AssetsJsonsGen {
   const $AssetsJsonsGen();
 
+  /// File path: assets/jsons/device_get_device_by_id_200_deactivate_response.json
+  String get deviceGetDeviceById200DeactivateResponse => 'assets/jsons/device_get_device_by_id_200_deactivate_response.json';
+
   /// File path: assets/jsons/device_get_device_by_id_200_response.json
   String get deviceGetDeviceById200Response => 'assets/jsons/device_get_device_by_id_200_response.json';
 
@@ -87,7 +90,8 @@ class $AssetsJsonsGen {
   String get deviceGetDeviceById500Response => 'assets/jsons/device_get_device_by_id_500_response.json';
 
   /// List of all assets
-  List<String> get values => [deviceGetDeviceById200Response, deviceGetDeviceById404Response, deviceGetDeviceById500Response];
+  List<String> get values =>
+      [deviceGetDeviceById200DeactivateResponse, deviceGetDeviceById200Response, deviceGetDeviceById404Response, deviceGetDeviceById500Response];
 }
 
 class Assets {

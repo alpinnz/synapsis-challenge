@@ -16,7 +16,8 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$WaitingActivationState {
-  CubitState<dynamic> get register => throw _privateConstructorUsedError;
+  CubitState<Device> get activation => throw _privateConstructorUsedError;
+  WaitingActivationArgs? get args => throw _privateConstructorUsedError;
 
   /// Create a copy of WaitingActivationState
   /// with the given fields replaced by the non-null parameter values.
@@ -31,9 +32,9 @@ abstract class $WaitingActivationStateCopyWith<$Res> {
           $Res Function(WaitingActivationState) then) =
       _$WaitingActivationStateCopyWithImpl<$Res, WaitingActivationState>;
   @useResult
-  $Res call({CubitState<dynamic> register});
+  $Res call({CubitState<Device> activation, WaitingActivationArgs? args});
 
-  $CubitStateCopyWith<dynamic, $Res> get register;
+  $CubitStateCopyWith<Device, $Res> get activation;
 }
 
 /// @nodoc
@@ -52,13 +53,18 @@ class _$WaitingActivationStateCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? register = null,
+    Object? activation = null,
+    Object? args = freezed,
   }) {
     return _then(_value.copyWith(
-      register: null == register
-          ? _value.register
-          : register // ignore: cast_nullable_to_non_nullable
-              as CubitState<dynamic>,
+      activation: null == activation
+          ? _value.activation
+          : activation // ignore: cast_nullable_to_non_nullable
+              as CubitState<Device>,
+      args: freezed == args
+          ? _value.args
+          : args // ignore: cast_nullable_to_non_nullable
+              as WaitingActivationArgs?,
     ) as $Val);
   }
 
@@ -66,9 +72,9 @@ class _$WaitingActivationStateCopyWithImpl<$Res,
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $CubitStateCopyWith<dynamic, $Res> get register {
-    return $CubitStateCopyWith<dynamic, $Res>(_value.register, (value) {
-      return _then(_value.copyWith(register: value) as $Val);
+  $CubitStateCopyWith<Device, $Res> get activation {
+    return $CubitStateCopyWith<Device, $Res>(_value.activation, (value) {
+      return _then(_value.copyWith(activation: value) as $Val);
     });
   }
 }
@@ -82,10 +88,10 @@ abstract class _$$WaitingActivationStateImplCopyWith<$Res>
       __$$WaitingActivationStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({CubitState<dynamic> register});
+  $Res call({CubitState<Device> activation, WaitingActivationArgs? args});
 
   @override
-  $CubitStateCopyWith<dynamic, $Res> get register;
+  $CubitStateCopyWith<Device, $Res> get activation;
 }
 
 /// @nodoc
@@ -103,13 +109,18 @@ class __$$WaitingActivationStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? register = null,
+    Object? activation = null,
+    Object? args = freezed,
   }) {
     return _then(_$WaitingActivationStateImpl(
-      register: null == register
-          ? _value.register
-          : register // ignore: cast_nullable_to_non_nullable
-              as CubitState<dynamic>,
+      activation: null == activation
+          ? _value.activation
+          : activation // ignore: cast_nullable_to_non_nullable
+              as CubitState<Device>,
+      args: freezed == args
+          ? _value.args
+          : args // ignore: cast_nullable_to_non_nullable
+              as WaitingActivationArgs?,
     ));
   }
 }
@@ -118,16 +129,18 @@ class __$$WaitingActivationStateImplCopyWithImpl<$Res>
 
 class _$WaitingActivationStateImpl extends _WaitingActivationState {
   const _$WaitingActivationStateImpl(
-      {this.register = const CubitState(status: Status.initial())})
+      {this.activation = const CubitState(status: Status.initial()), this.args})
       : super._();
 
   @override
   @JsonKey()
-  final CubitState<dynamic> register;
+  final CubitState<Device> activation;
+  @override
+  final WaitingActivationArgs? args;
 
   @override
   String toString() {
-    return 'WaitingActivationState(register: $register)';
+    return 'WaitingActivationState(activation: $activation, args: $args)';
   }
 
   @override
@@ -135,12 +148,13 @@ class _$WaitingActivationStateImpl extends _WaitingActivationState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$WaitingActivationStateImpl &&
-            (identical(other.register, register) ||
-                other.register == register));
+            (identical(other.activation, activation) ||
+                other.activation == activation) &&
+            (identical(other.args, args) || other.args == args));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, register);
+  int get hashCode => Object.hash(runtimeType, activation, args);
 
   /// Create a copy of WaitingActivationState
   /// with the given fields replaced by the non-null parameter values.
@@ -153,12 +167,15 @@ class _$WaitingActivationStateImpl extends _WaitingActivationState {
 }
 
 abstract class _WaitingActivationState extends WaitingActivationState {
-  const factory _WaitingActivationState({final CubitState<dynamic> register}) =
-      _$WaitingActivationStateImpl;
+  const factory _WaitingActivationState(
+      {final CubitState<Device> activation,
+      final WaitingActivationArgs? args}) = _$WaitingActivationStateImpl;
   const _WaitingActivationState._() : super._();
 
   @override
-  CubitState<dynamic> get register;
+  CubitState<Device> get activation;
+  @override
+  WaitingActivationArgs? get args;
 
   /// Create a copy of WaitingActivationState
   /// with the given fields replaced by the non-null parameter values.

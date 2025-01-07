@@ -28,8 +28,10 @@ class DeviceRemoteDataSourceImpl extends DeviceRemoteDataSource {
         final res = ResponseModel<String>.fromJson(json.decode(response.body), (json) => json.toString());
         throw ServerException(code: response.statusCode, message: res.message);
       }
+    } on BaseException catch (_) {
+      rethrow;
     } catch (err) {
-      throw ServerException(code: 500, message: "Terjadi masalah");
+      throw ServerException(code: 500, message: err.toString());
     }
   }
 }
