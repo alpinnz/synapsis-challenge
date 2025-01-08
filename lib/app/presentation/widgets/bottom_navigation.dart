@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:synapsis/app/assets/assets.gen.dart';
 import 'package:synapsis/app/core/router/app_router.dart';
+import 'package:synapsis/app/presentation/cubits/app/app_cubit.dart';
+import 'package:synapsis/app/presentation/cubits/chat/chat_cubit.dart';
 import 'package:synapsis/app/shared/theme/theme_color.dart';
 import 'package:synapsis/app/shared/theme/theme_text_style.dart';
 
@@ -102,12 +105,15 @@ class BottomNavigation extends StatelessWidget {
                           return InkWell(
                             onTap: () {
                               child.goBranch(e.key, initialLocation: e.key == child.currentIndex);
-                              // switch (e.key) {
-                              //   case 2:
-                              //     {
-                              //       appRouter.toCart(context);
-                              //     }
-                              // }
+
+                              switch (e.key) {
+                                case 2:
+                                  {
+                                    context.read<ChatCubit>().onInitial(
+                                          equipmentId: context.read<AppCubit>().state.device.data?.equipment?.id ?? "",
+                                        );
+                                  }
+                              }
                             },
                             child: Container(
                               decoration: BoxDecoration(

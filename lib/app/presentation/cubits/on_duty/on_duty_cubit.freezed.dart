@@ -15,13 +15,23 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$OnDutyState {}
+mixin _$OnDutyState {
+  Message? get socketMessage => throw _privateConstructorUsedError;
+
+  /// Create a copy of OnDutyState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $OnDutyStateCopyWith<OnDutyState> get copyWith =>
+      throw _privateConstructorUsedError;
+}
 
 /// @nodoc
 abstract class $OnDutyStateCopyWith<$Res> {
   factory $OnDutyStateCopyWith(
           OnDutyState value, $Res Function(OnDutyState) then) =
       _$OnDutyStateCopyWithImpl<$Res, OnDutyState>;
+  @useResult
+  $Res call({Message? socketMessage});
 }
 
 /// @nodoc
@@ -36,13 +46,29 @@ class _$OnDutyStateCopyWithImpl<$Res, $Val extends OnDutyState>
 
   /// Create a copy of OnDutyState
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? socketMessage = freezed,
+  }) {
+    return _then(_value.copyWith(
+      socketMessage: freezed == socketMessage
+          ? _value.socketMessage
+          : socketMessage // ignore: cast_nullable_to_non_nullable
+              as Message?,
+    ) as $Val);
+  }
 }
 
 /// @nodoc
-abstract class _$$OnDutyStateImplCopyWith<$Res> {
+abstract class _$$OnDutyStateImplCopyWith<$Res>
+    implements $OnDutyStateCopyWith<$Res> {
   factory _$$OnDutyStateImplCopyWith(
           _$OnDutyStateImpl value, $Res Function(_$OnDutyStateImpl) then) =
       __$$OnDutyStateImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({Message? socketMessage});
 }
 
 /// @nodoc
@@ -55,28 +81,65 @@ class __$$OnDutyStateImplCopyWithImpl<$Res>
 
   /// Create a copy of OnDutyState
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? socketMessage = freezed,
+  }) {
+    return _then(_$OnDutyStateImpl(
+      socketMessage: freezed == socketMessage
+          ? _value.socketMessage
+          : socketMessage // ignore: cast_nullable_to_non_nullable
+              as Message?,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$OnDutyStateImpl implements _OnDutyState {
-  const _$OnDutyStateImpl();
+  const _$OnDutyStateImpl({this.socketMessage});
+
+  @override
+  final Message? socketMessage;
 
   @override
   String toString() {
-    return 'OnDutyState()';
+    return 'OnDutyState(socketMessage: $socketMessage)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$OnDutyStateImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$OnDutyStateImpl &&
+            (identical(other.socketMessage, socketMessage) ||
+                other.socketMessage == socketMessage));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, socketMessage);
+
+  /// Create a copy of OnDutyState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$OnDutyStateImplCopyWith<_$OnDutyStateImpl> get copyWith =>
+      __$$OnDutyStateImplCopyWithImpl<_$OnDutyStateImpl>(this, _$identity);
 }
 
 abstract class _OnDutyState implements OnDutyState {
-  const factory _OnDutyState() = _$OnDutyStateImpl;
+  const factory _OnDutyState({final Message? socketMessage}) =
+      _$OnDutyStateImpl;
+
+  @override
+  Message? get socketMessage;
+
+  /// Create a copy of OnDutyState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$OnDutyStateImplCopyWith<_$OnDutyStateImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

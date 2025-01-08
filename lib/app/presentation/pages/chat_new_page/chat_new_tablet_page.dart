@@ -4,7 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:synapsis/app/assets/assets.gen.dart';
 import 'package:synapsis/app/presentation/cubits/chat_new/chat_new_cubit.dart';
-import 'package:synapsis/app/presentation/pages/chat_page/chat_tablet_page.dart';
 import 'package:synapsis/app/shared/theme/theme_color.dart';
 import 'package:synapsis/app/shared/theme/theme_text_style.dart';
 
@@ -43,9 +42,9 @@ class ChatNewTabletPage extends StatelessWidget {
               child: SingleChildScrollView(
                 child: Column(
                   children: [
-                    ChatMessageCard(position: ChatMessageCardPosition.left, isUserMe: false),
-                    ChatMessageCard(position: ChatMessageCardPosition.right, isUserMe: true),
-                    ChatMessageCard(position: ChatMessageCardPosition.left, isUserMe: false),
+                    // ChatMessageCard(position: ChatMessageCardPosition.left, isUserMe: false),
+                    // ChatMessageCard(position: ChatMessageCardPosition.right, isUserMe: true),
+                    // ChatMessageCard(position: ChatMessageCardPosition.left, isUserMe: false),
                   ],
                 ),
               ),

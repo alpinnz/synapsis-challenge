@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:synapsis/app/core/di/app_injector.dart';
-import 'package:synapsis/app/presentation/cubits/chat/chat_cubit.dart';
+import 'package:synapsis/app/presentation/cubits/app/app_cubit.dart';
 import 'package:synapsis/app/presentation/cubits/chat_new/chat_new_cubit.dart';
 import 'package:synapsis/app/presentation/cubits/login/login_cubit.dart';
 import 'package:synapsis/app/presentation/cubits/on_duty/on_duty_cubit.dart';
@@ -131,10 +131,7 @@ class AppRouter {
                 path: chat.path,
                 pageBuilder: (context, GoRouterState state) {
                   return getPage(
-                    child: BlocProvider(
-                      create: (context) => injector<ChatCubit>(),
-                      child: ChatPage(),
-                    ),
+                    child: ChatPage(),
                     state: state,
                   );
                 },
@@ -162,7 +159,7 @@ class AppRouter {
                 pageBuilder: (context, GoRouterState state) {
                   return getPage(
                     child: BlocProvider(
-                      create: (context) => injector<OnDutyCubit>(),
+                      create: (context) => injector<OnDutyCubit>()..onInitial(equipmentId: context.read<AppCubit>().state.device.data?.equipment?.id ?? ""),
                       child: OnDutyPage(),
                     ),
                     state: state,

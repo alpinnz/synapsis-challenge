@@ -21,7 +21,7 @@ class LoginTabletPage extends StatefulWidget {
 }
 
 class _LoginTabletPageState extends State<LoginTabletPage> {
-  TextEditingController txtNik = TextEditingController();
+  TextEditingController txtNik = TextEditingController(text: "ALPINNZNS");
 
   Widget wSuccess(BuildContext context) {
     return SingleChildScrollView(

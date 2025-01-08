@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:synapsis/app/assets/assets.gen.dart';
+import 'package:synapsis/app/core/router/app_router.dart';
 import 'package:synapsis/app/presentation/cubits/on_duty/on_duty_cubit.dart';
 import 'package:synapsis/app/shared/theme/theme_color.dart';
 import 'package:synapsis/app/shared/theme/theme_text_style.dart';
@@ -13,7 +14,12 @@ class OnDutyTabletPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocListener<OnDutyCubit, OnDutyState>(
-      listener: (context, state) {},
+      listener: (context, state) {
+        if (state.socketMessage != null) {
+          appRouter.toNewCart(context);
+
+        }
+      },
       child: Stack(
         children: [
           Container(
