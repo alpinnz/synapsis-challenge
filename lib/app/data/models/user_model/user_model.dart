@@ -1,12 +1,11 @@
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:synapsis/app/core/database/app_database.dart';
 import 'package:synapsis/app/domain/entities/user/user.dart';
 
 part 'user_model.g.dart';
 
 @JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
-class UserModel extends Equatable implements AppDatabaseModel {
+class UserModel extends Equatable {
   final String id;
   final int roleId;
   final String roleName;

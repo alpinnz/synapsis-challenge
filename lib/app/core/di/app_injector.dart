@@ -2,12 +2,9 @@ import 'package:get_it/get_it.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:synapsis/app/core/api/api.dart';
-import 'package:synapsis/app/core/database/app_database.dart';
-import 'package:synapsis/app/core/database/app_database_impl.dart';
 import 'package:synapsis/app/core/router/app_router.dart';
 import 'package:synapsis/app/core/service/websocket_service/socket_channel.dart';
 import 'package:synapsis/app/core/service/websocket_service/socket_channel_impl.dart';
-import 'package:synapsis/app/data/data_sources/auth_data_source/auth_local_data_source.dart';
 import 'package:synapsis/app/data/data_sources/auth_data_source/auth_remote_data_source.dart';
 import 'package:synapsis/app/data/data_sources/device_data_source/device_remote_data_source.dart';
 import 'package:synapsis/app/data/data_sources/message_data_source/message_remote_data_source.dart';
@@ -38,7 +35,6 @@ class AppInjector {
     final sp = await SharedPreferences.getInstance();
     injector.registerLazySingleton<SharedPreferences>(() => sp);
     injector.registerLazySingleton<http.Client>(() => http.Client());
-    injector.registerLazySingleton<AppDatabase>(() => AppDatabaseImpl());
     injector.registerLazySingleton<Api>(() => ApiImpl(httpClient: injector(), sharedPreferences: injector()));
 
     // service
@@ -47,12 +43,11 @@ class AppInjector {
     // data sources
     injector.registerLazySingleton<DeviceRemoteDataSource>(() => DeviceRemoteDataSourceImpl(httpClient: injector()));
     injector.registerLazySingleton<AuthRemoteDataSource>(() => AuthRemoteDataSourceImpl(apiClient: injector()));
-    injector.registerLazySingleton<AuthLocalDataSource>(() => AuthLocalDataSourceImpl(database: injector()));
     injector.registerLazySingleton<MessageRemoteDataSource>(() => MessageRemoteDataSourceImpl(api: injector()));
 
     // repositories
     injector.registerLazySingleton<DeviceRepository>(() => DeviceRepositoryImpl(deviceRemoteDataSource: injector()));
-    injector.registerLazySingleton<AuthRepository>(() => AuthRepositoryImpl(authRemoteDataSource: injector(), authLocalDataSource: injector()));
+    injector.registerLazySingleton<AuthRepository>(() => AuthRepositoryImpl(authRemoteDataSource: injector()));
     injector.registerLazySingleton<MessageRepository>(() => MessageRepositoryImpl(messageRemoteDataSource: injector()));
 
     // use cases
