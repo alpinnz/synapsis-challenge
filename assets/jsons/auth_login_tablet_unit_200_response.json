@@ -1,0 +1,60 @@
+{
+  "code": 200,
+  "status": true,
+  "message": "Success Login Tablet Unit",
+  "data": {
+    "id": "ALPINNZNS",
+    "role_id": 29,
+    "role_name": "Operator",
+    "is_default_role": false,
+    "department_id": "OPE",
+    "department_name": "Operation",
+    "site_id": "001D",
+    "site_name": "Head Office Jakarta",
+    "fleet_id": null,
+    "nik": "ALPINNZNS",
+    "name": "Alfin NS",
+    "email": "alpinnzns@gmail.com",
+    "phone": "1234567890123",
+    "is_active": true,
+    "image_url": "https://assets.apps-madhani.com/fms/profiles/MDA5ODkzNjAwXzE0ODc3NjE0MTUtMTcwMjIzX1NlbmdrZXRhX1N0YXR1c19Lb250cmFrX0ZyZWVwb3J0X0Jhbm5lcl9BYmRpbGxhaC5qcGc=.jpg",
+    "unit_id": "3d437371ff",
+    "unit_code": "TR-PSR1210301009B1",
+    "unit_type_id": "3d437371ff",
+    "login_type": 1,
+    "login_status": 1,
+    "login_at": "2025-01-08T01:56:12.189052101Z",
+    "last_total_cycle": 0,
+    "last_total_hauler": 0,
+    "last_cycle_id": "",
+    "last_activity_id": "",
+    "last_pit": {
+      "id": "",
+      "name": ""
+    },
+    "last_hauler": {
+      "hauler_id": "",
+      "code": "",
+      "operator_hauler_id": ""
+    },
+    "last_loader": {
+      "loader_id": "",
+      "code": "",
+      "operator_loader_id": ""
+    },
+    "last_loading_point": {
+      "id": "",
+      "name": ""
+    },
+    "last_dumping_point": {
+      "id": "",
+      "name": ""
+    },
+    "last_material": {
+      "id": "",
+      "name": ""
+    },
+    "cycle_finished": true,
+    "is_disposal": false
+  }
+}

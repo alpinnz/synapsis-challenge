@@ -16,7 +16,8 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$AppState {
-  Device? get device => throw _privateConstructorUsedError;
+  CubitState<User> get user => throw _privateConstructorUsedError;
+  CubitState<Device> get device => throw _privateConstructorUsedError;
 
   /// Create a copy of AppState
   /// with the given fields replaced by the non-null parameter values.
@@ -30,7 +31,10 @@ abstract class $AppStateCopyWith<$Res> {
   factory $AppStateCopyWith(AppState value, $Res Function(AppState) then) =
       _$AppStateCopyWithImpl<$Res, AppState>;
   @useResult
-  $Res call({Device? device});
+  $Res call({CubitState<User> user, CubitState<Device> device});
+
+  $CubitStateCopyWith<User, $Res> get user;
+  $CubitStateCopyWith<Device, $Res> get device;
 }
 
 /// @nodoc
@@ -48,14 +52,39 @@ class _$AppStateCopyWithImpl<$Res, $Val extends AppState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? device = freezed,
+    Object? user = null,
+    Object? device = null,
   }) {
     return _then(_value.copyWith(
-      device: freezed == device
+      user: null == user
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as CubitState<User>,
+      device: null == device
           ? _value.device
           : device // ignore: cast_nullable_to_non_nullable
-              as Device?,
+              as CubitState<Device>,
     ) as $Val);
+  }
+
+  /// Create a copy of AppState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $CubitStateCopyWith<User, $Res> get user {
+    return $CubitStateCopyWith<User, $Res>(_value.user, (value) {
+      return _then(_value.copyWith(user: value) as $Val);
+    });
+  }
+
+  /// Create a copy of AppState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $CubitStateCopyWith<Device, $Res> get device {
+    return $CubitStateCopyWith<Device, $Res>(_value.device, (value) {
+      return _then(_value.copyWith(device: value) as $Val);
+    });
   }
 }
 
@@ -67,7 +96,12 @@ abstract class _$$AppStateImplCopyWith<$Res>
       __$$AppStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({Device? device});
+  $Res call({CubitState<User> user, CubitState<Device> device});
+
+  @override
+  $CubitStateCopyWith<User, $Res> get user;
+  @override
+  $CubitStateCopyWith<Device, $Res> get device;
 }
 
 /// @nodoc
@@ -83,13 +117,18 @@ class __$$AppStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? device = freezed,
+    Object? user = null,
+    Object? device = null,
   }) {
     return _then(_$AppStateImpl(
-      device: freezed == device
+      user: null == user
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as CubitState<User>,
+      device: null == device
           ? _value.device
           : device // ignore: cast_nullable_to_non_nullable
-              as Device?,
+              as CubitState<Device>,
     ));
   }
 }
@@ -97,14 +136,20 @@ class __$$AppStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$AppStateImpl implements _AppState {
-  const _$AppStateImpl({this.device});
+  const _$AppStateImpl(
+      {this.user = const CubitState<User>(status: Status.initial()),
+      this.device = const CubitState<Device>(status: Status.initial())});
 
   @override
-  final Device? device;
+  @JsonKey()
+  final CubitState<User> user;
+  @override
+  @JsonKey()
+  final CubitState<Device> device;
 
   @override
   String toString() {
-    return 'AppState(device: $device)';
+    return 'AppState(user: $user, device: $device)';
   }
 
   @override
@@ -112,11 +157,12 @@ class _$AppStateImpl implements _AppState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AppStateImpl &&
+            (identical(other.user, user) || other.user == user) &&
             (identical(other.device, device) || other.device == device));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, device);
+  int get hashCode => Object.hash(runtimeType, user, device);
 
   /// Create a copy of AppState
   /// with the given fields replaced by the non-null parameter values.
@@ -128,10 +174,14 @@ class _$AppStateImpl implements _AppState {
 }
 
 abstract class _AppState implements AppState {
-  const factory _AppState({final Device? device}) = _$AppStateImpl;
+  const factory _AppState(
+      {final CubitState<User> user,
+      final CubitState<Device> device}) = _$AppStateImpl;
 
   @override
-  Device? get device;
+  CubitState<User> get user;
+  @override
+  CubitState<Device> get device;
 
   /// Create a copy of AppState
   /// with the given fields replaced by the non-null parameter values.

@@ -8,9 +8,9 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BLayout(
-      desktop: (context, orientation) => const LoginTabletPage(),
-      tablet: (context, orientation) => const LoginTabletPage(),
-      mobile: (context, orientation) => const LoginTabletPage(),
+      desktop: (context, orientation) => LoginTabletPage(),
+      tablet: (context, orientation) => LoginTabletPage(),
+      mobile: (context, orientation) => LoginTabletPage(),
     );
   }
 }

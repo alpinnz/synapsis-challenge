@@ -16,7 +16,8 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$LoginState {
-  CubitState<dynamic> get login => throw _privateConstructorUsedError;
+  CubitState<User> get login => throw _privateConstructorUsedError;
+  CubitState<Device> get device => throw _privateConstructorUsedError;
 
   /// Create a copy of LoginState
   /// with the given fields replaced by the non-null parameter values.
@@ -31,9 +32,10 @@ abstract class $LoginStateCopyWith<$Res> {
           LoginState value, $Res Function(LoginState) then) =
       _$LoginStateCopyWithImpl<$Res, LoginState>;
   @useResult
-  $Res call({CubitState<dynamic> login});
+  $Res call({CubitState<User> login, CubitState<Device> device});
 
-  $CubitStateCopyWith<dynamic, $Res> get login;
+  $CubitStateCopyWith<User, $Res> get login;
+  $CubitStateCopyWith<Device, $Res> get device;
 }
 
 /// @nodoc
@@ -52,12 +54,17 @@ class _$LoginStateCopyWithImpl<$Res, $Val extends LoginState>
   @override
   $Res call({
     Object? login = null,
+    Object? device = null,
   }) {
     return _then(_value.copyWith(
       login: null == login
           ? _value.login
           : login // ignore: cast_nullable_to_non_nullable
-              as CubitState<dynamic>,
+              as CubitState<User>,
+      device: null == device
+          ? _value.device
+          : device // ignore: cast_nullable_to_non_nullable
+              as CubitState<Device>,
     ) as $Val);
   }
 
@@ -65,9 +72,19 @@ class _$LoginStateCopyWithImpl<$Res, $Val extends LoginState>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $CubitStateCopyWith<dynamic, $Res> get login {
-    return $CubitStateCopyWith<dynamic, $Res>(_value.login, (value) {
+  $CubitStateCopyWith<User, $Res> get login {
+    return $CubitStateCopyWith<User, $Res>(_value.login, (value) {
       return _then(_value.copyWith(login: value) as $Val);
+    });
+  }
+
+  /// Create a copy of LoginState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $CubitStateCopyWith<Device, $Res> get device {
+    return $CubitStateCopyWith<Device, $Res>(_value.device, (value) {
+      return _then(_value.copyWith(device: value) as $Val);
     });
   }
 }
@@ -80,10 +97,12 @@ abstract class _$$LoginStateImplCopyWith<$Res>
       __$$LoginStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({CubitState<dynamic> login});
+  $Res call({CubitState<User> login, CubitState<Device> device});
 
   @override
-  $CubitStateCopyWith<dynamic, $Res> get login;
+  $CubitStateCopyWith<User, $Res> get login;
+  @override
+  $CubitStateCopyWith<Device, $Res> get device;
 }
 
 /// @nodoc
@@ -100,12 +119,17 @@ class __$$LoginStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? login = null,
+    Object? device = null,
   }) {
     return _then(_$LoginStateImpl(
       login: null == login
           ? _value.login
           : login // ignore: cast_nullable_to_non_nullable
-              as CubitState<dynamic>,
+              as CubitState<User>,
+      device: null == device
+          ? _value.device
+          : device // ignore: cast_nullable_to_non_nullable
+              as CubitState<Device>,
     ));
   }
 }
@@ -114,15 +138,19 @@ class __$$LoginStateImplCopyWithImpl<$Res>
 
 class _$LoginStateImpl implements _LoginState {
   const _$LoginStateImpl(
-      {this.login = const CubitState(status: Status.initial())});
+      {this.login = const CubitState<User>(status: Status.initial()),
+      this.device = const CubitState<Device>(status: Status.initial())});
 
   @override
   @JsonKey()
-  final CubitState<dynamic> login;
+  final CubitState<User> login;
+  @override
+  @JsonKey()
+  final CubitState<Device> device;
 
   @override
   String toString() {
-    return 'LoginState(login: $login)';
+    return 'LoginState(login: $login, device: $device)';
   }
 
   @override
@@ -130,11 +158,12 @@ class _$LoginStateImpl implements _LoginState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LoginStateImpl &&
-            (identical(other.login, login) || other.login == login));
+            (identical(other.login, login) || other.login == login) &&
+            (identical(other.device, device) || other.device == device));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, login);
+  int get hashCode => Object.hash(runtimeType, login, device);
 
   /// Create a copy of LoginState
   /// with the given fields replaced by the non-null parameter values.
@@ -146,11 +175,14 @@ class _$LoginStateImpl implements _LoginState {
 }
 
 abstract class _LoginState implements LoginState {
-  const factory _LoginState({final CubitState<dynamic> login}) =
-      _$LoginStateImpl;
+  const factory _LoginState(
+      {final CubitState<User> login,
+      final CubitState<Device> device}) = _$LoginStateImpl;
 
   @override
-  CubitState<dynamic> get login;
+  CubitState<User> get login;
+  @override
+  CubitState<Device> get device;
 
   /// Create a copy of LoginState
   /// with the given fields replaced by the non-null parameter values.

@@ -30,106 +30,108 @@ class WaitingActivationTabletPage extends StatelessWidget {
               color: ThemeColor.xFFFFFF,
               borderRadius: BorderRadius.circular(8),
             ),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              spacing: 64,
-              children: [
-                Row(
-                  mainAxisSize: MainAxisSize.min,
-                  spacing: 8,
-                  children: [
-                    Assets.icons.install.svg(),
-                    Column(
-                      mainAxisSize: MainAxisSize.min,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "Installation Wizard",
-                          style: ThemeTextStyle.custom(
-                            fontFamily: GoogleFonts.inter().fontFamily,
-                            fontSize: 32.sp,
-                            fontWeight: FontWeight.w700,
-                            color: ThemeColor.x1F3251,
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                spacing: 64,
+                children: [
+                  Row(
+                    mainAxisSize: MainAxisSize.min,
+                    spacing: 8,
+                    children: [
+                      Assets.icons.install.svg(),
+                      Column(
+                        mainAxisSize: MainAxisSize.min,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Installation Wizard",
+                            style: ThemeTextStyle.custom(
+                              fontFamily: GoogleFonts.inter().fontFamily,
+                              fontSize: 32.sp,
+                              fontWeight: FontWeight.w700,
+                              color: ThemeColor.x1F3251,
+                            ),
                           ),
-                        ),
-                        Text(
-                          "Device must be registered before can be used",
-                          style: ThemeTextStyle.custom(
-                            fontFamily: GoogleFonts.inter().fontFamily,
-                            fontSize: 24.sp,
-                            fontWeight: FontWeight.w400,
-                            color: ThemeColor.x1073FC,
-                          ),
-                        )
-                      ],
-                    ),
-                  ],
-                ),
-                // step 1
-                Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  spacing: 16,
-                  children: [
-                    Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Text(
-                          "Your serial number",
-                          style: ThemeTextStyle.custom(
-                            fontFamily: GoogleFonts.inter().fontFamily,
-                            fontSize: 19.sp,
-                            fontWeight: FontWeight.w400,
-                            color: ThemeColor.x121212,
-                          ),
-                        ),
-                        BlocBuilder<WaitingActivationCubit, WaitingActivationState>(
-                          builder: (context, state) {
-                            return TextField(
-                              controller: TextEditingController(text: context.read<AppCubit>().state.device?.headUnitSn ?? "-"),
-                              style: ThemeTextStyle.custom(
-                                fontFamily: GoogleFonts.inter().fontFamily,
-                                fontSize: 24.sp,
-                                fontWeight: FontWeight.w500,
-                                color: ThemeColor.x646464,
-                              ),
-                              readOnly: true,
-                              textAlign: TextAlign.center,
-                              decoration: InputDecoration(
-                                filled: true,
-                                fillColor: ThemeColor.xFAFDFD,
-                                border: OutlineInputBorder(
-                                  gapPadding: 8,
-                                  borderSide: BorderSide(color: ThemeColor.xD0D7DE, width: 1),
-                                  borderRadius: BorderRadius.circular(4),
-                                ),
-                              ),
-                            );
-                          },
-                        ),
-                      ],
-                    ),
-                    Text(
-                      "Waiting for activation...",
-                      style: ThemeTextStyle.custom(
-                        fontFamily: GoogleFonts.inter().fontFamily,
-                        fontSize: 16.sp,
-                        fontWeight: FontWeight.w400,
-                        color: ThemeColor.x1073FC,
+                          Text(
+                            "Device must be registered before can be used",
+                            style: ThemeTextStyle.custom(
+                              fontFamily: GoogleFonts.inter().fontFamily,
+                              fontSize: 24.sp,
+                              fontWeight: FontWeight.w400,
+                              color: ThemeColor.x1073FC,
+                            ),
+                          )
+                        ],
                       ),
-                    ),
-                  ],
-                ),
-                Text(
-                  "Version 1.0.0",
-                  style: ThemeTextStyle.custom(
-                    fontFamily: GoogleFonts.sora().fontFamily,
-                    fontSize: 14.sp,
-                    fontWeight: FontWeight.w400,
-                    color: ThemeColor.x000000,
+                    ],
                   ),
-                ),
-              ],
+                  // step 1
+                  Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    spacing: 16,
+                    children: [
+                      Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text(
+                            "Your serial number",
+                            style: ThemeTextStyle.custom(
+                              fontFamily: GoogleFonts.inter().fontFamily,
+                              fontSize: 19.sp,
+                              fontWeight: FontWeight.w400,
+                              color: ThemeColor.x121212,
+                            ),
+                          ),
+                          BlocBuilder<WaitingActivationCubit, WaitingActivationState>(
+                            builder: (context, state) {
+                              return TextField(
+                                controller: TextEditingController(text: context.read<AppCubit>().state.device.data?.headUnitSn ?? "-"),
+                                style: ThemeTextStyle.custom(
+                                  fontFamily: GoogleFonts.inter().fontFamily,
+                                  fontSize: 24.sp,
+                                  fontWeight: FontWeight.w500,
+                                  color: ThemeColor.x646464,
+                                ),
+                                readOnly: true,
+                                textAlign: TextAlign.center,
+                                decoration: InputDecoration(
+                                  filled: true,
+                                  fillColor: ThemeColor.xFAFDFD,
+                                  border: OutlineInputBorder(
+                                    gapPadding: 8,
+                                    borderSide: BorderSide(color: ThemeColor.xD0D7DE, width: 1),
+                                    borderRadius: BorderRadius.circular(4),
+                                  ),
+                                ),
+                              );
+                            },
+                          ),
+                        ],
+                      ),
+                      Text(
+                        "Waiting for activation...",
+                        style: ThemeTextStyle.custom(
+                          fontFamily: GoogleFonts.inter().fontFamily,
+                          fontSize: 16.sp,
+                          fontWeight: FontWeight.w400,
+                          color: ThemeColor.x1073FC,
+                        ),
+                      ),
+                    ],
+                  ),
+                  Text(
+                    "Version 1.0.0",
+                    style: ThemeTextStyle.custom(
+                      fontFamily: GoogleFonts.sora().fontFamily,
+                      fontSize: 14.sp,
+                      fontWeight: FontWeight.w400,
+                      color: ThemeColor.x000000,
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),

@@ -11,7 +11,13 @@ class DeviceGetDeviceByIdUseCase implements UseCaseWithParams<Either<BaseExcepti
 
   @override
   Future<Either<BaseException, Device>> execute({required DeviceGetDeviceByIdUseCaseParams params}) async {
-    return deviceRepository.getDeviceById(deviceId: params.deviceId);
+    try {
+      return deviceRepository.getDeviceById(deviceId: params.deviceId);
+    } on BaseException catch (_) {
+      rethrow;
+    } catch (err) {
+      throw ClientException(message: err.toString());
+    }
   }
 }
 

@@ -18,6 +18,13 @@ class ServerException extends BaseException {
   List<Object?> get props => [code, message];
 }
 
+class DatabaseException extends BaseException {
+  const DatabaseException({required super.message});
+
+  @override
+  List<Object?> get props => [message];
+}
+
 class ClientException extends BaseException {
   const ClientException({required super.message});
 

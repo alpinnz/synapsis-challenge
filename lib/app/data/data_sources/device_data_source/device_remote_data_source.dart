@@ -17,10 +17,10 @@ class DeviceRemoteDataSourceImpl extends DeviceRemoteDataSource {
 
   @override
   Future<DeviceModel> getDeviceById({required String deviceId}) async {
-    final uri = Uri.parse("${UrlConstants.baseApiUrl}${UrlConstants.equipmentsDevices}/$deviceId");
-    final response = await httpClient.get(uri);
-
     try {
+      final uri = Uri.parse("${UrlConstants.baseApiUrl}${UrlConstants.equipmentsDevices}/$deviceId");
+      final response = await httpClient.get(uri);
+
       if (response.statusCode == 200) {
         final res = ResponseModel<DeviceModel>.fromJson(json.decode(response.body), (json) => DeviceModel.fromJson(json as Map<String, dynamic>));
         return res.data;
