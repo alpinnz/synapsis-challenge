@@ -31,8 +31,8 @@ final injector = GetIt.instance;
 
 class AppInjector {
   Future<void> initializeDependencies() async {
-    injector.registerLazySingleton<AppRouter>(() => AppRouter());
     final sp = await SharedPreferences.getInstance();
+    injector.registerLazySingleton<AppRouter>(() => AppRouter());
     injector.registerLazySingleton<SharedPreferences>(() => sp);
     injector.registerLazySingleton<http.Client>(() => http.Client());
     injector.registerLazySingleton<Api>(() => ApiImpl(httpClient: injector(), sharedPreferences: injector()));

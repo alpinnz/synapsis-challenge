@@ -79,7 +79,7 @@ class ApiImpl implements Api {
 
     log("${response.statusCode} ${method.name.split(".")[0]} $pathUrl}", name: "API");
 
-    if (withToken && response.headers.containsKey(cookieKey)) {
+    if (response.headers.containsKey(cookieKey)) {
       final rawSplit = '${response.headers[cookieKey]}'.split(";");
       if (rawSplit.isNotEmpty) {
         sharedPreferences.setString(cookieKey, rawSplit.first);

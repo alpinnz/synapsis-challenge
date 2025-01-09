@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -21,7 +22,7 @@ class LoginTabletPage extends StatefulWidget {
 }
 
 class _LoginTabletPageState extends State<LoginTabletPage> {
-  TextEditingController txtNik = TextEditingController(text: "ALPINNZNS");
+  TextEditingController txtNik = TextEditingController(text: kDebugMode ? "ALPINNZNS" : "");
 
   Widget wSuccess(BuildContext context) {
     return SingleChildScrollView(
