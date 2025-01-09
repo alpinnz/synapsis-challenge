@@ -4,7 +4,9 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:synapsis/app/assets/assets.gen.dart';
+import 'package:synapsis/app/core/api/api.dart';
 import 'package:synapsis/app/core/constants/url_constants.dart';
 import 'package:synapsis/app/core/error/exception.dart';
 import 'package:synapsis/app/data/data_sources/device_data_source/device_remote_data_source.dart';
@@ -14,16 +16,23 @@ import 'package:synapsis/app/shared/utils/json_reader.dart';
 
 import 'device_remote_data_source_test.mocks.dart';
 
-@GenerateNiceMocks([MockSpec<DeviceRemoteDataSource>(), MockSpec<http.Client>()])
+@GenerateNiceMocks([MockSpec<DeviceRemoteDataSource>(), MockSpec<http.Client>(), MockSpec<SharedPreferences>()])
 void main() {
-  final mockDeviceRemoteDataSource = MockDeviceRemoteDataSource();
-  final mockHttpClient = MockClient();
-  final deviceRemoteDataSourceImpl = DeviceRemoteDataSourceImpl(httpClient: mockHttpClient);
+  DeviceRemoteDataSource mockDeviceRemoteDataSource = MockDeviceRemoteDataSource();
+
+  http.Client mockClient = MockClient();
+  SharedPreferences mockSharedPreferences = MockSharedPreferences();
+  Api api = ApiImpl(httpClient: mockClient, sharedPreferences: mockSharedPreferences);
+  DeviceRemoteDataSourceImpl deviceRemoteDataSourceImpl = DeviceRemoteDataSourceImpl(api: api);
 
   const String deviceId200 = "DEVICE06";
   const String deviceId200Deactivate = "445D768F-F353-42E8-9243-34AB0F22A1FA";
   const String deviceId404 = "1231231";
   const String deviceId500 = "1231231";
+
+  Map<String, String> headers = {
+    "Content-Type": "application/json",
+  };
 
   group("Device Remote Data Source", () {
     group("getDeviceById(deviceId: deviceId)()", () {
@@ -67,12 +76,13 @@ void main() {
         final expectJson = jsonReader(Assets.jsons.deviceGetDeviceById200Response);
         final expectT = ResponseModel<DeviceModel>.fromJson(expectJson, (json) => DeviceModel.fromJson(json as Map<String, dynamic>)).data;
         // Proses stubbing
-        when(mockHttpClient.get(uri)).thenAnswer((e) async {
+        when(mockClient.get(uri, headers: headers)).thenAnswer((e) async {
           return http.Response(json.encode(expectJson), 200);
         });
 
         try {
           var res = await deviceRemoteDataSourceImpl.getDeviceById(deviceId: deviceId200);
+
           expect(res, expectT);
         } catch (err) {
           fail("Error: $err");
@@ -84,7 +94,7 @@ void main() {
         final expectJson = jsonReader(Assets.jsons.deviceGetDeviceById200DeactivateResponse);
         final expectT = ResponseModel<DeviceModel>.fromJson(expectJson, (json) => DeviceModel.fromJson(json as Map<String, dynamic>)).data;
         // Proses stubbing
-        when(mockHttpClient.get(uri)).thenAnswer((e) async {
+        when(mockClient.get(uri, headers: headers)).thenAnswer((e) async {
           return http.Response(json.encode(expectJson), 200);
         });
 
@@ -98,9 +108,9 @@ void main() {
 
       test('Status Code 404', () async {
         final uri = Uri.parse("${UrlConstants.baseApiUrl}${UrlConstants.equipmentsDevices}/$deviceId404");
-        final expectJson = jsonReader(Assets.jsons.deviceGetDeviceById404Response);
+        final expectJson = jsonReader(Assets.jsons.api404Response);
         // Proses stubbing
-        when(mockHttpClient.get(uri)).thenAnswer((e) async {
+        when(mockClient.get(uri)).thenAnswer((e) async {
           return http.Response(json.encode(expectJson), 404);
         });
 
@@ -114,9 +124,9 @@ void main() {
 
       test('Status Code 500', () async {
         final uri = Uri.parse("${UrlConstants.baseApiUrl}${UrlConstants.equipmentsDevices}/$deviceId500");
-        final expectJson = jsonReader(Assets.jsons.deviceGetDeviceById500Response);
+        final expectJson = jsonReader(Assets.jsons.api500Response);
         // Proses stubbing
-        when(mockHttpClient.get(uri)).thenAnswer((e) async {
+        when(mockClient.get(uri)).thenAnswer((e) async {
           return http.Response(json.encode(expectJson), 500);
         });
 

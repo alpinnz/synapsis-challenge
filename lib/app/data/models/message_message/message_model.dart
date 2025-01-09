@@ -1,10 +1,11 @@
+import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:synapsis/app/domain/entities/message/message.dart';
 
 part 'message_model.g.dart';
 
 @JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
-class MessageModel {
+class MessageModel extends Equatable {
   String id;
   String equipmentId;
   String senderNik;
@@ -56,4 +57,21 @@ class MessageModel {
       categoryName: categoryName,
     );
   }
+
+  @override
+  List<Object?> get props => [
+        id,
+        equipmentId,
+        senderNik,
+        isRead,
+        message,
+        createdAt,
+        updatedAt,
+        senderName,
+        deviceType,
+        categoryId,
+        equipmentCode,
+        equipmentSiteId,
+        categoryName,
+      ];
 }

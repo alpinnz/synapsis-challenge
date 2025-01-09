@@ -1,0 +1,21 @@
+{
+  "code": 201,
+  "status": true,
+  "message": "Message created successfully",
+  "data": {
+    "id": "92484d39fb",
+    "equipment_id": "3d437371ff",
+    "sender_nik": "ALPINNZNS",
+    "is_read": false,
+    "message": "Jalanan berkabut",
+    "created_at": "2025-01-09T02:16:31.117239Z",
+    "updated_at": "2025-01-09T02:16:31.117239Z",
+    "sender_name": "Alfin NS",
+    "device_type": "Mobile",
+    "category_id": "1",
+    "equipment_code": "TR-PSR1210301009B1",
+    "fleet_id": null,
+    "equipment_site_id": "001D",
+    "category_name": "Warning"
+  }
+}

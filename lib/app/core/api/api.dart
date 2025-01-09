@@ -39,11 +39,14 @@ class ApiImpl implements Api {
     required bool withToken,
   }) async {
     final uri = Uri.parse("${UrlConstants.baseApiUrl}$pathUrl");
-    final body = jsonEncode(data);
 
     Map<String, String> headers = {
       "Content-Type": "application/json",
     };
+
+    if (additionalHeaders != null) {
+      headers.addAll(additionalHeaders);
+    }
 
     if (withToken && sharedPreferences.getString(cookieKey) is String) {
       headers.addAll({"cookie": sharedPreferences.getString(cookieKey)!});
@@ -58,26 +61,25 @@ class ApiImpl implements Api {
         }
       case ApiMethod.post:
         {
-          response = await httpClient.post(uri, body: body, headers: headers);
+          response = await httpClient.post(uri, body: json.encode(data), headers: headers);
         }
       case ApiMethod.put:
         {
-          response = await httpClient.put(uri, body: body, headers: headers);
+          response = await httpClient.put(uri, body: json.encode(data), headers: headers);
         }
       case ApiMethod.delete:
         {
-          response = await httpClient.delete(uri, body: body, headers: headers);
+          response = await httpClient.delete(uri, body: json.encode(data), headers: headers);
         }
       case ApiMethod.patch:
         {
-          response = await httpClient.patch(uri, body: body, headers: headers);
+          response = await httpClient.patch(uri, body: json.encode(data), headers: headers);
         }
     }
 
     log("${response.statusCode} ${method.name.split(".")[0]} $pathUrl}", name: "API");
 
-    if (response.headers.containsKey(cookieKey)) {
-      log("${response.headers[cookieKey]}", name: "API-set-cookie");
+    if (withToken && response.headers.containsKey(cookieKey)) {
       final rawSplit = '${response.headers[cookieKey]}'.split(";");
       if (rawSplit.isNotEmpty) {
         sharedPreferences.setString(cookieKey, rawSplit.first);
@@ -86,7 +88,6 @@ class ApiImpl implements Api {
 
     try {
       if (response.statusCode >= 200 && response.statusCode < 300) {
-        print(json.decode(response.body));
         final res = ResponseModel<T>.fromJson(json.decode(response.body), fromJsonT);
         return res;
       } else {

@@ -8,9 +8,9 @@ abstract class AuthRemoteDataSource {
 }
 
 class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
-  final Api apiClient;
+  final Api api;
 
-  AuthRemoteDataSourceImpl({required this.apiClient});
+  AuthRemoteDataSourceImpl({required this.api});
 
   @override
   Future<UserModel> onLoginTabletUnit({required String unitId, required String nik, required String shiftId, required int loginType}) async {
@@ -21,7 +21,7 @@ class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
         "shift_id": shiftId,
         "login_type": loginType,
       };
-      final res = await apiClient.reqV1<UserModel>(
+      final res = await api.reqV1<UserModel>(
         UrlConstants.loginTabletUnit,
         ApiMethod.post,
         data: data,

@@ -77,14 +77,17 @@ class $AssetsImagesGen {
 class $AssetsJsonsGen {
   const $AssetsJsonsGen();
 
-  /// File path: assets/jsons/auth_login_tablet_unit_200_request.json
-  String get authLoginTabletUnit200Request => 'assets/jsons/auth_login_tablet_unit_200_request.json';
+  /// File path: assets/jsons/api_400_response.json
+  String get api400Response => 'assets/jsons/api_400_response.json';
+
+  /// File path: assets/jsons/api_404_response.json
+  String get api404Response => 'assets/jsons/api_404_response.json';
+
+  /// File path: assets/jsons/api_500_response.json
+  String get api500Response => 'assets/jsons/api_500_response.json';
 
   /// File path: assets/jsons/auth_login_tablet_unit_200_response.json
   String get authLoginTabletUnit200Response => 'assets/jsons/auth_login_tablet_unit_200_response.json';
-
-  /// File path: assets/jsons/auth_login_tablet_unit_400_request.json
-  String get authLoginTabletUnit400Request => 'assets/jsons/auth_login_tablet_unit_400_request.json';
 
   /// File path: assets/jsons/auth_login_tablet_unit_400_response.json
   String get authLoginTabletUnit400Response => 'assets/jsons/auth_login_tablet_unit_400_response.json';
@@ -95,22 +98,27 @@ class $AssetsJsonsGen {
   /// File path: assets/jsons/device_get_device_by_id_200_response.json
   String get deviceGetDeviceById200Response => 'assets/jsons/device_get_device_by_id_200_response.json';
 
-  /// File path: assets/jsons/device_get_device_by_id_404_response.json
-  String get deviceGetDeviceById404Response => 'assets/jsons/device_get_device_by_id_404_response.json';
+  /// File path: assets/jsons/message_create_messages_201_response.json
+  String get messageCreateMessages201Response => 'assets/jsons/message_create_messages_201_response.json';
 
-  /// File path: assets/jsons/device_get_device_by_id_500_response.json
-  String get deviceGetDeviceById500Response => 'assets/jsons/device_get_device_by_id_500_response.json';
+  /// File path: assets/jsons/message_get_messages_200_response.json
+  String get messageGetMessages200Response => 'assets/jsons/message_get_messages_200_response.json';
+
+  /// File path: assets/jsons/message_get_messages_template_200_response.json
+  String get messageGetMessagesTemplate200Response => 'assets/jsons/message_get_messages_template_200_response.json';
 
   /// List of all assets
   List<String> get values => [
-        authLoginTabletUnit200Request,
+        api400Response,
+        api404Response,
+        api500Response,
         authLoginTabletUnit200Response,
-        authLoginTabletUnit400Request,
         authLoginTabletUnit400Response,
         deviceGetDeviceById200DeactivateResponse,
         deviceGetDeviceById200Response,
-        deviceGetDeviceById404Response,
-        deviceGetDeviceById500Response
+        messageCreateMessages201Response,
+        messageGetMessages200Response,
+        messageGetMessagesTemplate200Response
       ];
 }
 

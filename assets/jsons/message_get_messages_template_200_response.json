@@ -1,0 +1,144 @@
+{
+  "code": 200,
+  "status": true,
+  "message": "Subject found successfully",
+  "page": 1,
+  "count": 10,
+  "total": 18,
+  "data": [
+    {
+      "id": "slipery-grader",
+      "name": "Slipery (Grader)",
+      "code": 4,
+      "category_id": "2",
+      "sending_type": [
+        "Manual"
+      ],
+      "default_message": "Slippery, segera tangani kondisi jalan ...",
+      "created_at": "2024-09-11T13:30:14.68173Z",
+      "updated_at": "2024-09-11T13:30:14.68173Z",
+      "category_name": "Umum"
+    },
+    {
+      "id": "slipery-fleet",
+      "name": "Slipery (Fleet)",
+      "code": 6,
+      "category_id": "2",
+      "sending_type": [
+        "Manual"
+      ],
+      "default_message": "Start Operasi ...",
+      "created_at": "2024-09-11T13:30:14.68173Z",
+      "updated_at": "2024-09-11T13:30:14.68173Z",
+      "category_name": "Umum"
+    },
+    {
+      "id": "test-fatigue",
+      "name": "Test Fatigue",
+      "code": 7,
+      "category_id": "2",
+      "sending_type": [
+        "Manual"
+      ],
+      "default_message": "Test Fatigue akan dilaksanakan pada Jam ...",
+      "created_at": "2024-09-11T13:30:14.68173Z",
+      "updated_at": "2024-09-11T13:30:14.68173Z",
+      "category_name": "Umum"
+    },
+    {
+      "id": "unit-maintenance",
+      "name": "Unit Maintenance",
+      "code": 9,
+      "category_id": "2",
+      "sending_type": [
+        "Manual"
+      ],
+      "default_message": "Equipment akan di Maintenance ...",
+      "created_at": "2024-09-11T13:30:14.68173Z",
+      "updated_at": "2024-09-11T13:30:14.68173Z",
+      "category_name": "Umum"
+    },
+    {
+      "id": "pray",
+      "name": "Pray",
+      "code": 14,
+      "category_id": "2",
+      "sending_type": [
+        "Manual",
+        "Automate"
+      ],
+      "default_message": "Stop Operasi - Waktunya Ibadah ...",
+      "created_at": "2024-09-11T13:30:14.68173Z",
+      "updated_at": "2024-09-11T13:30:14.68173Z",
+      "category_name": "Umum"
+    },
+    {
+      "id": "after-pray",
+      "name": "After Pray",
+      "code": 15,
+      "category_id": "2",
+      "sending_type": [
+        "Manual",
+        "Automate"
+      ],
+      "default_message": "Waktu jeda untuk ibadah selesai, Start Operasi ...",
+      "created_at": "2024-09-11T13:30:14.68173Z",
+      "updated_at": "2024-09-11T13:30:14.68173Z",
+      "category_name": "Umum"
+    },
+    {
+      "id": "rest",
+      "name": "Rest",
+      "code": 16,
+      "category_id": "2",
+      "sending_type": [
+        "Manual",
+        "Automate"
+      ],
+      "default_message": "Stop Operasi - Waktunya Istirahat ...",
+      "created_at": "2024-09-11T13:30:14.68173Z",
+      "updated_at": "2024-09-11T13:30:14.68173Z",
+      "category_name": "Umum"
+    },
+    {
+      "id": "after-rest",
+      "name": "After Rest",
+      "code": 17,
+      "category_id": "2",
+      "sending_type": [
+        "Manual",
+        "Automate"
+      ],
+      "default_message": "Waktu istirahat selesai, Start Operasi ...",
+      "created_at": "2024-09-11T13:30:14.68173Z",
+      "updated_at": "2024-09-11T13:30:14.68173Z",
+      "category_name": "Umum"
+    },
+    {
+      "id": "other",
+      "name": "Other",
+      "code": 23,
+      "category_id": "2",
+      "sending_type": [
+        "Manual"
+      ],
+      "default_message": "...",
+      "created_at": "2024-09-11T13:30:14.68173Z",
+      "updated_at": "2024-09-11T13:30:14.68173Z",
+      "category_name": "Umum"
+    },
+    {
+      "id": "after-blasting",
+      "name": "After Blasting",
+      "code": 13,
+      "category_id": "1",
+      "sending_type": [
+        "Manual"
+      ],
+      "default_message": "Start Operasi (jika kondisi sudah clear) / Stop Operasi - Problem Blasting selesai ditangani ...",
+      "created_at": "2024-09-11T13:30:14.68173Z",
+      "updated_at": "2024-09-11T13:30:14.68173Z",
+      "category_name": "Warning"
+    }
+  ]
+}

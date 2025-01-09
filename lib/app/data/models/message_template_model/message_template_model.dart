@@ -1,10 +1,11 @@
+import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:synapsis/app/domain/entities/message_template/message_template.dart';
 
 part 'message_template_model.g.dart';
 
 @JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
-class MessageTemplateModel {
+class MessageTemplateModel extends Equatable {
   String id;
   String name;
   int code;
@@ -44,4 +45,7 @@ class MessageTemplateModel {
       categoryName: categoryName,
     );
   }
+
+  @override
+  List<Object?> get props => [id];
 }

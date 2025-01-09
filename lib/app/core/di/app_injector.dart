@@ -41,8 +41,8 @@ class AppInjector {
     injector.registerFactory<SocketChannel>(() => SocketChannelImpl());
 
     // data sources
-    injector.registerLazySingleton<DeviceRemoteDataSource>(() => DeviceRemoteDataSourceImpl(httpClient: injector()));
-    injector.registerLazySingleton<AuthRemoteDataSource>(() => AuthRemoteDataSourceImpl(apiClient: injector()));
+    injector.registerLazySingleton<DeviceRemoteDataSource>(() => DeviceRemoteDataSourceImpl(api: injector()));
+    injector.registerLazySingleton<AuthRemoteDataSource>(() => AuthRemoteDataSourceImpl(api: injector()));
     injector.registerLazySingleton<MessageRemoteDataSource>(() => MessageRemoteDataSourceImpl(api: injector()));
 
     // repositories
